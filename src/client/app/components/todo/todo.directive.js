@@ -32,13 +32,9 @@
         }
 
         function save(t) {
-            //return added
-            return todoService.update(t)
-                //result added
+            todoService.update(t)
                 .then(function (result) {
                     logger.success('TODO item successfully saved to server');
-                    //return added
-                    return result;
                 });
         }
 
