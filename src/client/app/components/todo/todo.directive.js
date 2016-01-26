@@ -1,4 +1,4 @@
-(function () {
+(function() {
 
     angular.module('app.components.todo')
         .directive('todo', todoDirective);
@@ -32,12 +32,10 @@
         }
 
         function save(t) {
-            //return added
+            //Promise returned here for the purpose of mocked data demonstration.
             return todoService.update(t)
-                //result added
-                .then(function (result) {
+                .then(function(result) {
                     logger.success('TODO item successfully saved to server');
-                    //return added
                     return result;
                 });
         }

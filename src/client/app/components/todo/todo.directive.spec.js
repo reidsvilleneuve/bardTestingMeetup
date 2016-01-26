@@ -45,11 +45,6 @@
 
         describe('vm.save()', function() {
             it('Should log a notification', function(done) {
-                //Do this first, then continue if no time:
-                //vm.save('Test');
-                //$rootScope.$apply();
-                //expect(logger.success.called).to.be.true;
-
                 vm.save('Test').then(function(result) {
                     expect(result).to.equal('Hello!');
                     expect(logger.success.called).to.be.true;
@@ -59,6 +54,5 @@
                 $rootScope.$apply();
             });
         });
-
     });
 })();
