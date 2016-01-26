@@ -19,13 +19,15 @@
                 'logger'
             );
 
-            //Show BB usage of this afterwards.
             bard.mockService(todoService, {
                 update: $q.when('Hello!'),
                 remove: $q.when('Bye bye!')
             });
-            bard.mockService(logger, {});
 
+            bard.mockService(logger, {});
+        });
+
+        beforeEach(function() {
             var html = angular.element('<todo></todo>');
             $rootScope = $rootScope.$new();
             $templateCache.put('app/components/todo/todo.html', '');
