@@ -40,13 +40,13 @@
 
         bard.verifyNoOutstandingHttpRequests();
 
-        it('Opens the designEdit.directive', function() {
-            expect(element).to.be.ok();
-            expect(vm).to.be.ok();
+        it('is able to be created', function() {
+            expect(element).to.exist;
+            expect(vm).to.exit;
         });
 
-        describe('vm.save()', function() {
-            it('Should log a notification', function(done) {
+        describe('save()', function() {
+            it('should log a notification', function(done) {
                 vm.save('Test').then(function(result) {
                     expect(result).to.equal('Hello!');
                     expect(logger.success.called).to.be.true;
