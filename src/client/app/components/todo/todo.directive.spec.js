@@ -1,0 +1,64 @@
+/* jshint -W117, -W030 */
+(function() {
+    'use strict';
+
+    describe('Directive: designSpecs', function() {
+
+        var element,
+            vm;
+
+        beforeEach(function() {
+            bard.appModule('app.components.todo', 'blocks.logger');
+
+            bard.inject(
+                '$compile',
+                '$q',
+                '$rootScope',
+                '$templateCache',
+                'todoService',
+                'logger'
+            );
+
+            //Show BB usage of this afterwards.
+            bard.mockService(todoService, {
+                update: $q.when('Hello!'),
+                remove: $q.when('Bye bye!')
+            });
+            bard.mockService(logger, {});
+
+            var html = angular.element('<todo></todo>');
+            $rootScope = $rootScope.$new();
+            $templateCache.put('app/components/todo/todo.html', '');
+            element = $compile(html)($rootScope);
+
+            $rootScope.$digest(element);
+
+            vm = element.controller('todo');
+        });
+
+        bard.verifyNoOutstandingHttpRequests();
+
+        it('Opens the designEdit.directive', function() {
+            expect(element).to.be.ok();
+            expect(vm).to.be.ok();
+        });
+
+        describe('vm.save()', function() {
+            it('Should log a notification', function(done) {
+                //Do this first, then continue if no time:
+                //vm.save('Test');
+                //$rootScope.$apply();
+                //expect(logger.success.called).to.be.true;
+
+                vm.save('Test').then(function(result) {
+                    expect(result).to.equal('Hello!');
+                    expect(logger.success.called).to.be.true;
+                    done();
+                });
+
+                $rootScope.$apply();
+            });
+        });
+
+    });
+})();
