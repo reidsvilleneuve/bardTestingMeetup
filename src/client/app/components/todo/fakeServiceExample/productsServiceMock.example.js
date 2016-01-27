@@ -25,6 +25,7 @@ var mocks = mocks || {};
             remove: remove,
             loadById: loadById,
             search: search,
+
             _default: getResult
         };
 
