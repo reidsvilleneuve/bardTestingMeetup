@@ -43,14 +43,8 @@
             }
         }
 
-        function search(qry, limit, offset) {
-            var obj = {
-                qry: qry,
-                offset: offset,
-                limit: limit
-            };
-
-            return myRestService.GET(resource + '/search', obj);
+        function search(searchQuery) {
+            return myRestService.GET(resource + '/search', searchQuery);
         }
     }
 })();
