@@ -22,7 +22,9 @@ module.exports = function() {
         // all javascript that we want to vet
         alljs: [
             './src/**/*.js',
-            './*.js'
+            './*.js',
+            '!./src/**/*.example.js',
+            '!./*.example.js'
         ],
         build: './build/',
         client: client,
@@ -36,7 +38,8 @@ module.exports = function() {
         js: [
             clientApp + '**/*.module.js',
             clientApp + '**/*.js',
-            '!' + clientApp + '**/*.spec.js'
+            '!' + clientApp + '**/*.spec.js',
+            '!' + clientApp + '**/*.example.js'
         ],
         jsOrder: [
             '**/app.module.js',
@@ -65,7 +68,12 @@ module.exports = function() {
         /**
          * plato
          */
-        plato: {js: clientApp + '**/*.js'},
+        plato: {
+            js: [
+                clientApp + '**/*.js',
+                '!' + clientApp + '**/*.example.js'
+            ]
+        },
 
         /**
          * browser sync
@@ -154,6 +162,7 @@ module.exports = function() {
                 config.specHelpers,
                 clientApp + '**/*.module.js',
                 clientApp + '**/*.js',
+                '!' + clientApp + '**/*.example.js',
                 temp + config.templateCache.file,
                 config.serverIntegrationSpecs
             ),
