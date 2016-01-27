@@ -11,7 +11,6 @@
         .factory('ProductService', ProductService);
 
     ProductService.$inject = ['myRestService'];
-
     function ProductService(myRestService) {
 
         var resource = '/api/products';
