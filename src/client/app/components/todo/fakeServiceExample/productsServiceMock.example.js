@@ -65,7 +65,7 @@ var mocks = mocks || {};
             id = parseInt(id, 10);
 
             return $q.when({
-                //Assume lodash is on the global scope for the purpose of simplicity.
+                //Pretend that lodash is on the global scope for the sake of simplicity.
                 data: _.find(getData(), {_id: id})
             });
         }
